@@ -7,20 +7,20 @@
     <h1>Register Router</h1>
     <label>IP:</label>
     <form method="POST" action="/add">
-    <input name="router_ip" placeholder="Router's IP Address" required />
+    <input name="ip" required />
     <label> Username:</label>
-    <input name="username" placeholder="Username" required />
+    <input name="username" required />
     <label> Password:</label>
-    <input type="password" name="password" placeholder="password" required />
+    <input type="password" name="password" required />
     <button type="submit">Add</button>
   </form>
 
   <h2>Routers List</h2>
   <ul>
-    {% for field in data %}
+    {% for field in routers %}
       <li>
-	       {{ field.router_ip }} - {{ field.username }}	 
-         <form method="POST" action="/delete/{{ loop.index0 }}" style="display:inline">
+	       {{ field.ip }} - {{ field.username }}	 
+         <form method="POST" action="/delete/{{ field._id }}" style="display:inline">
            <button type="submit">Delete</button>
          </form>
       </li>
