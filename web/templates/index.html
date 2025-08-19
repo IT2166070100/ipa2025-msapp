@@ -4,20 +4,23 @@
     <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-    <h1>You are calling me from {{request.remote_addr}}</h1>
+    <h1>Register Router</h1>
+    <label>IP:</label>
     <form method="POST" action="/add">
     <input name="router_ip" placeholder="Router's IP Address" required />
+    <label> Username:</label>
     <input name="username" placeholder="Username" required />
+    <label> Password:</label>
     <input type="password" name="password" placeholder="password" required />
     <button type="submit">Add</button>
   </form>
 
+  <h2>Routers List</h2>
   <ul>
     {% for field in data %}
       <li>
 	       {{ field.router_ip }} - {{ field.username }}	 
-         <form method="POST" action="{{ url_for('delete_router') }}" style="display:inline">
-           <input type="hidden" name="idx" value="{{ loop.index0 }}">
+         <form method="POST" action="/delete/{{ loop.index0 }}" style="display:inline">
            <button type="submit">Delete</button>
          </form>
       </li>
