@@ -1,4 +1,4 @@
-service:
+services:
   web:
     image: ${DOCKERHUB_USERNAME}/web:latest
 
