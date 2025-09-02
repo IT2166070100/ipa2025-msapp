@@ -19,7 +19,7 @@
   <ul>
     {% for field in routers %}
       <li>
-	       {{ field.ip }} - {{ field.username }}	 
+	       <a href="/router/{{ field.ip }}">{{ field.ip }}</a> - {{ field.username }}	 
          <form method="POST" action="/delete/{{ field._id }}" style="display:inline">
            <button type="submit">Delete</button>
          </form>

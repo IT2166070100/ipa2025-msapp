@@ -31,6 +31,14 @@ def add_router():
         })
     return redirect("/")
 
+interface_status = db["interface_status"]
+
+@app.route("/router/<ip>", methods=["GET"])
+def router_details(ip):
+    doc = db.interface_status.find({"router_ip": ip}).sort("timestamp", -1).limit(3)
+    print(doc)
+    return render_template("router_details.html", router_ip=ip, interfaces_data=doc)
+
 @app.route("/delete/<id>", methods=["POST"])
 def delete_router(id):
     routers.delete_one({"_id": ObjectId(id)})
