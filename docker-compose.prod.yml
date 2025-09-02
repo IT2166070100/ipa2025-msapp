@@ -1,0 +1,9 @@
+service:
+  web:
+    image" ${DOCKER_USERNAME}/web:latest
+
+  scheduler:
+    image" ${DOCKER_USERNAME}/scheduler:latest
+
+  worker:
+    image" ${DOCKER_USERNAME}/worker:latest
