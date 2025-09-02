@@ -1,9 +1,9 @@
 service:
   web:
-    image" ${DOCKER_USERNAME}/web:latest
+    image" ${DOCKERHUB_USERNAME}/web:latest
 
   scheduler:
-    image" ${DOCKER_USERNAME}/scheduler:latest
+    image" ${DOCKERHUB_USERNAME}/scheduler:latest
 
   worker:
-    image" ${DOCKER_USERNAME}/worker:latest
+    image" ${DOCKERHUB_USERNAME}/worker:latest
