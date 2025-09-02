@@ -9,9 +9,6 @@ services:
       - app-net
     env_file:
       - .env
-    environment:
-      MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/"
-      DB_NAME: "ipa2025_db"
 
   mongo:
     image: mongo:6
@@ -19,6 +16,53 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app-net
+    env_file:
+      - .env
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/ipa2025_db --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    depends_on:
+      - mongo
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - app-net
+    env_file:
+      - .env
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+  scheduler:
+    build: ./scheduler
+    depends_on:
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - app-net
+    env_file:
+      - .env
+
+  worker:
+    build: ./worker
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
     networks:
       - app-net
     env_file:
