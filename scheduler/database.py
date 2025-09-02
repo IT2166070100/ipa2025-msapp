@@ -6,7 +6,7 @@ def get_router_info():
     db_name = os.environ.get("DB_NAME")
 
     client = MongoClient(mongo_uri)
-    db =client[db_name]
+    db = client[db_name]
     routers = db["routers"]
 
     router_data = routers.find()
