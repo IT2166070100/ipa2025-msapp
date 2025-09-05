@@ -11,6 +11,7 @@ services:
       - .env
     environment:
       MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/"
+      DB_NAME: "ipa2025_db"
 
 
   mongo:
