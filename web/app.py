@@ -7,7 +7,9 @@ from bson import ObjectId
 app = Flask(__name__)
 
 mongo_uri = os.environ.get("MONGO_URI")
+print(mongo_uri)
 db_name = os.environ.get("DB_NAME")
+print(db_name)
 
 client = MongoClient(mongo_uri)
 db = client[db_name]

@@ -1,12 +1,6 @@
-FROM python
-
-RUN pip install flask
-RUN pip install pymongo
-
-COPY  ./static /home/myapp/static/
-COPY  ./templates /home/myapp/templates/
-COPY  app.py /home/myapp/
-
+FROM python:3.12-slim
+WORKDIR /app
+COPY . /app
+RUN pip install -r requirements.txt
 EXPOSE 8080
-
-CMD python /home/myapp/app.py
+CMD ["python3", "app.py"]
