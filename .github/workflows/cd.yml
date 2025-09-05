@@ -33,7 +33,6 @@ jobs:
             echo "RABBITMQ_DEFAULT_PASS=${{ secrets.RABBITMQ_DEFAULT_PASS }}"
             echo "DB_NAME=${{ secrets.DB_NAME }}"
             echo "RABBITMQ_HOST=${{ secrets.RABBITMQ_HOST }}"
-"
           } > .env
           chmod 600 .env
 
