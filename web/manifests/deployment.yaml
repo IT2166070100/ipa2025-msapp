@@ -20,4 +20,4 @@ spec:
             - containerPort: 8080
           envFrom:
             - secretRef:
-                name: "ipa.env" # ชื่อ secret ให้ตรงกับที่เราสร้าง secret ใน rancher
+                name: "envipa" # ชื่อ secret ให้ตรงกับที่เราสร้าง secret ใน rancher
