@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     environment:
-      MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/"
+      MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@10.30.7.17:27017/"
       DB_NAME: "ipa2025_db"
 
 
