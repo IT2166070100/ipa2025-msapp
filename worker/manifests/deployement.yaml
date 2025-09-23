@@ -18,7 +18,7 @@ spec:
           image: it66070100/worker:latest
           envFrom:
             - secretRef:
-                name: "________"
+                name: "ipaenv"
           resources:
             requests:
               cpu: "50m"
