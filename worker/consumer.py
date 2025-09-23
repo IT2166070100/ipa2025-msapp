@@ -32,5 +32,5 @@ def consume(host):
 
 
 if __name__ == "__main__":
-    rabbitmq_host = os.getenv("RABBITMQ_HOST", "localhost")
+    rabbitmq_host = os.getenv("RABBITMQ_HOST")
     consume(rabbitmq_host)
